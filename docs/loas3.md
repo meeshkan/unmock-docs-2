@@ -8,7 +8,7 @@ But fear not! Unmock can process [`loas3`](https://www.github.com/unmock/loas3),
 
 Lazy Open API 3 allows you to omit information when you create a path, and provides sensible defaults when you do.  The defaults work as follows.
 
-```
+```yaml
 paths:
   /my-path:
     [get]:
@@ -22,7 +22,7 @@ paths:
 
 Thus:
 
-```
+```yaml
 paths:
   /my-path:
     type: string
@@ -31,7 +31,7 @@ paths:
 
 Is the same as
 
-```
+```yaml
 paths:
   /my-path:
     get:
@@ -48,14 +48,14 @@ paths:
 
 `loas3` infers the schema from types if you provide an example of a return object. Thus:
 
-```
+```yaml
 paths:
   /my-path: 1
 ```
 
 Is the same as:
 
-```
+```yaml
 paths:
   /my-path:
     get:
@@ -81,7 +81,7 @@ In addition to the way parameters are expressed in OpenAPI, parameters can be sp
 You can define `query`, `header`, `cookie` and `path` parameters as follows:
 
 
-```
+```yaml
 paths:
   /my-path:
     get:
@@ -94,7 +94,7 @@ paths:
 
 Is the same as:
 
-```
+```yaml
 paths:
   /my-path:
     get:
@@ -116,7 +116,7 @@ paths:
 
 For the unbearably, pathologically, irrecoverably lazy, you can just list the parameters as key-value pairs. They default to query unless they are in the enclosing path:
 
-```
+```yaml
 paths:
   /my-path/{bar}:
     get:
@@ -127,7 +127,7 @@ paths:
 
 Is the same as:
 
-```
+```yaml
 paths:
   /my-path:
     get:

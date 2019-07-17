@@ -31,7 +31,7 @@ $ touch __unmock__/hello/index.yml
 
 In `index.yml` file you just created, copy and paste the following [`loas3`](https://www.github.com/unmock/loas3) specification.
 
-```
+```yaml
 servers:
     - url: api.unmock.io
 paths:
@@ -44,7 +44,7 @@ paths:
 
 Unmock works with all major test runners (mocha, jest, etc).  Assuming you have jest installed, create a test called `hello.test.js`.
 
-```
+```js
 // hello.test.js
 var unmock = require('unmock-node')
 var axios = require('axios)
