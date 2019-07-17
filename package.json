@@ -1,0 +1,15 @@
+{
+  "name": "unmock-docs",
+  "version": "0.0.0",
+  "description": "The unmock documentation",
+  "main": "index.js",
+  "repository": "https://github.com/unmock/unmock-docs-2",
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.0.2"
+  },
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  }
+}
