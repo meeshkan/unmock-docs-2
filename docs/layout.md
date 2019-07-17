@@ -29,7 +29,7 @@ Unmock is able to turn most OpenAPI specifications into viable mocks without any
 
 In an OpenAPI Schema object, `x-unmock-concat` concatenates a string.
 
-```
+```yaml
 type: string
 x-unmock-concat:
     - foo
