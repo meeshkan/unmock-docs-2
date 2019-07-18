@@ -90,14 +90,3 @@ axios(`${PETSTORE_URL}/pets`);
 // -> [{ id: -999, name: randomly generated }, { id: -999, name: generated }, ... ]
 ```
 
-::: tip
-Unmock also validates the state based on the service specification, so for example `states.hello({ hello: 5 })` would fail, since `hello` is expected to be a string!
-:::
-
-::: tip
-You can also access the _state store_ by using `unmock.states()`
-:::
-
-::: tip
-If your service name starts with a digit, or if it contains spaces and other characters, you'll have to access it with an object notation (i.e. `states["9 foo\bar"]...`)
-:::
