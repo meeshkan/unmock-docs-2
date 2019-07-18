@@ -24,12 +24,12 @@ This creates the `__unmock__` directory in which you'll place all of your servic
 
 ```
 $ mkdir __unmock__/hello
-$ touch __unmock__/hello/index.yml
+$ touch __unmock__/hello/index.yaml
 ```
 
-## Filling out `index.yml`
+## Filling out `index.yaml`
 
-In `index.yml` file you just created, copy and paste the following [`loas3`](https://www.github.com/unmock/loas3) specification.
+In `index.yaml` file you just created, copy and paste the following [`loas3`](https://www.github.com/unmock/loas3) specification.
 
 ```yaml
 servers:
