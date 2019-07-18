@@ -53,7 +53,9 @@ Unmock works with all major test runners (mocha, jest, etc). Assuming you have j
 var unmock = require("unmock-node");
 var axios = require("axios");
 
-unmock.on();
+beforeAll(() => {
+  unmock.on();
+});
 
 test("hello endpoint returns correct JSON", async () => {
   var res = await axios.get("https://api.unmock.io");
