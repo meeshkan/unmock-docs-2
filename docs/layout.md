@@ -25,13 +25,4 @@ In Unmock, services are simply documents designed according to the [OpenAPI 3.0.
 
 Unmock is able to turn most OpenAPI specifications into viable mocks without any tinkering, but there are a few service extensions we provide to make the mocks moxier.  Unmock uses the `x-` pattern defined in the [OpenAPI specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#specificationExtensions).
 
-### `x-unmock-concat`
-
-In an OpenAPI Schema object, `x-unmock-concat` concatenates a string.
-
-```yaml
-type: string
-x-unmock-concat:
-    - foo
-    - bar
-```
+Unmock also supports Lazy OpenAPI 3, which we will explore in the next section.
