@@ -6,11 +6,11 @@ Of course, setting a state (or not) is perfect, but sometimes we need to run tes
 
 We use the term _DSL_ freely, but all it really means is setting some meta-level state. All DSL elements are prefixed with the dollar sign (`$`). We expand this DSL as needed, and currently offer minimal interaction.
 
-### Top level DSL
+## Top-level DSL
 
-Top level DSL is DSL that is truly meta for the entire response. It's not specific to any property within the response. Therefore, it may only be found at the top level of the object passed as a state. At any other level, it will be treated as a proper key.
+Top level DSL is DSL that is truly meta for the entire response. It's not specific to any property within the response. Therefore, it may only be found at the top level of the object passed as a state. At any other level, it will be treated as a proper key.  All of the commands below can apply to the top-level DSL or to a specific mocked service.
 
-#### \$code
+## `$code`
 
 Using `$code`, you may specify the response code you want for a specific endpoint. The response code must exist in the service specification.
 
@@ -21,7 +21,7 @@ states.petstore("/pets/5", { $code: 500 });
 states.petstore("/pets/2", { $code: 200, name: "Ace" });
 ```
 
-#### \$times
+## `$times`
 
 With `$times`, you can specify for how many requests the state is valid. Once a state has been used `$times` times, it will be removed and responses will be generated for all items.
 `$times` is rounded to the nearest integer and must be greater than 0.
@@ -32,11 +32,7 @@ With `$times`, you can specify for how many requests the state is valid. Once a 
 states.petstore("/pets/*", { $times: 2, name: "Ace" });
 ```
 
-### Content specific DSL
-
-Certain object types allow further interaction. At the moment we offer a single DSL statement, but we plan on adding more real soon!
-
-#### \$size
+## `$size`
 
 For array type objects, one can control how many items are returned with the `$size` DSL instruction. Unmock, as always, verifies the instruction is indeed matched for an array object, and that the value for `$size` is logical (rounds to a positive number).
 
@@ -47,11 +43,11 @@ states.petstore("/pets", { $size: 4 });
 states.github("/search/repositories", { total_count: 40, items: { $size: 40 } });
 ```
 
-## Unmock state middlewares
+## Unmock state middleware
 
-Unmock currently offers 2 middlewares. The default one is the object-notation middleware. You've seen it in the (basic usage)[/basic] - you pass key-value pairs as a state. The other one is a string middleware. Both are found under `unmock.middleware`.
+Unmock currently offers two middleware functions. The default one is the object-notation middleware. You've seen it in the (basic usage)[/basic] - you pass key-value pairs as a state. The other one is a string middleware. Both are found under `unmock.middleware`.
 
-We roll out more middlewares as are necessary - please let us know if you're missing anything!
+We roll out more middlewares as are necessary - please [let us know](https://github.com/unmock/unmock-js/issues) if you're missing anything!
 
 ### Object-notation
 
