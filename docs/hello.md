@@ -33,7 +33,7 @@ In `index.yaml` file you just created, copy and paste the following [`loas3`](ht
 
 ```yaml
 servers:
-  - url: api.unmock.io
+  - url: https://api.unmock.io
 paths:
   /:
     hello: world
