@@ -1,6 +1,6 @@
 # Hello World
 
-This guide walks you through through mocking a simple service.  Our service will be called `api.unmock.io` and it will return a single value from its endpoint: `{ hello: "world" }`.
+This guide walks you through through mocking a simple service. Our service will be called `api.unmock.io` and it will return a single value from its endpoint: `{ hello: "world" }`.
 
 ## Install unmock, jest, and axios
 
@@ -17,10 +17,10 @@ $ yarn add -D unmock-node jest axios
 At the toplevel of your project, run the following command.
 
 ```
-$ mkdir __unmock__ 
+$ mkdir __unmock__
 ```
 
-This creates the `__unmock__` directory in which you'll place all of your service specifications.  Then, run the following command.
+This creates the `__unmock__` directory in which you'll place all of your service specifications. Then, run the following command.
 
 ```
 $ mkdir __unmock__/hello
@@ -33,16 +33,15 @@ In `index.yml` file you just created, copy and paste the following [`loas3`](htt
 
 ```yaml
 servers:
-    - url: api.unmock.io
+  - url: api.unmock.io
 paths:
-    '/':
-        hello:
-            world
+  /:
+    hello: world
 ```
 
 ## Creating our first test
 
-Unmock works with all major test runners (mocha, jest, etc).  Assuming you have jest installed, create a test called `hello.test.js`.
+Unmock works with all major test runners (mocha, jest, etc). Assuming you have jest installed, create a test called `hello.test.js`.
 
 ```js
 // hello.test.js
