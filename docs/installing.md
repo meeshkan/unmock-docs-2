@@ -3,6 +3,6 @@
 You can install unmock by using `npm` or `yarn`.
 
 ```
-$ npm install --save-dev unmock-node
+$ npm i -D unmock-node
 $ yarn add -D unmock-node
 ```
