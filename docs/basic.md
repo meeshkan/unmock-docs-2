@@ -35,7 +35,7 @@ To set a state for a service, you may:
 - Call the service with the endpoint you would like to set, and the state you would like to set for it.
 
   ```javascript
-  states.petstore("/pets/5", { name: "blackie" });
+  states.petstore("/pets/5", { name: "sparky" });
   ```
 
   ::: tip
@@ -50,7 +50,7 @@ To set a state for a service, you may:
 - Access a specific HTTP method within the service and use the same calls on it
 
   ```javascript
-  states.petstore.get("/pets/5", { name: "still blackie" });
+  states.petstore.get("/pets/5", { name: "still sparky" });
   ```
 
 - Chain multiple calls with either HTTP methods and/or services:
@@ -58,7 +58,7 @@ To set a state for a service, you may:
   states
     .petstore
       .get("/pets/*", { name: "generic" })
-      .get("/pets/5", { name: "you guessed it! It's blackie!", id: 5 })
+      .get("/pets/5", { name: "you guessed it! It's sparky!", id: 5 })
     .github
       .post(...);
   ```
