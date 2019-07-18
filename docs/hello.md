@@ -1,6 +1,6 @@
 # Hello World
 
-This guide walks you through through mocking a simple service. Our service will be called `api.unmock.io` and it will return a single value from its endpoint: `hello`, which is a string.
+This guide walks you through through mocking a simple service. Our service will be called `hello`, and it describes a request made to `api.unmock.io`. The root endpoint returns a single value: `hello` - which is a string.
 
 ## Install unmock, jest, and axios
 
@@ -28,9 +28,13 @@ $ mkdir __unmock__/hello
 $ touch __unmock__/hello/index.yaml
 ```
 
+These create the service folder (called `hello` - we'll use this later on when we set a state for the service), and its service specification file.
+
 ## Filling out `index.yaml`
 
 In `index.yaml` file you just created, copy and paste the following [`loas3`](https://www.github.com/unmock/loas3) specification.
+
+unmock uses OpenAPI specification under the hood, but allows a lazy notation via `loas3`. In the example below, we automatically infer that `foo` is an example of a string.
 
 ```yaml
 servers:
@@ -39,8 +43,6 @@ paths:
   /:
     hello: foo
 ```
-
-unmock uses OpenAPI specification under the hood, but allows a lazy notation while writing specifications. In the above example, we automatically infer that `foo` is an example of a string.
 
 ## Creating our first test
 
@@ -68,5 +70,21 @@ $ yarn jest hello.test.js
 ```
 
 This simple example contains everything we need to be up and running with Unmock - a service specification and a call to `unmock.on()` in our test.
+
+## Returning a specific value
+
+With unmock, you no longer have to worry about mocking the response and/or overriding your code's default behaviour. However, we often want to check against our code against specific values. This is where the state management for `unmock` kicks in. To complete our introduction, add the following to `hello.test.js`:
+
+```js
+// ...
+// previous code
+// ...
+
+test("setting a value for endpoint", async () => {
+  unmock.states().hello({ hello: "world" });
+  var res = await axios.get("https://api.unmock.io");
+  expect(res.data).toEqual({ hello: "world " });
+});
+```
 
 The next sections will focus on defining the service specifications and overriding their default behavior with tweaks on a per-test basis.
