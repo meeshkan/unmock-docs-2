@@ -10,9 +10,7 @@ Testing your code with indeterministic responses helps you make a more robust co
 
 ## Setting a state
 
-Sometimes, you would like to refine this behavior on a test-by-test basis. For example, you may want one test to return `404`, whereas another test should return `200` with a specific JSON response needed to test how your code handles different scenarios (for example, a user name that is too long or a negative age).
-
-To do this, you can manipulate the unmock _state store_ object. When calling `unmock.on()` (or equivalent), you will get a state store as a returned value.
+Sometimes, you would like to refine Unmock's default behavior on a test-by-test basis. To do this, you can manipulate the unmock _state store_ object. When calling `unmock.on()` (or equivalent), you will get a state store as a returned value.
 
 ```javascript
 var states = unmock.on();
