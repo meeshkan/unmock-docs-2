@@ -1,12 +1,12 @@
 # `loas3`
 
-Sometimes, you are able to use an OpenAPI specification as-is in order to generate mocks. Mature projects and companies, such as Stripe and Slack, tend to have robust OpenAPI specifications that account for API corner cases and cover all API endpoints. However, in most cases, you will need to deal with APIs that have incomplete or no OpenAPI documentation.  In this case, you will need to author your own.
+Sometimes, you are able to use an OpenAPI specification as-is in order to generate mocks. Mature projects and companies, such as Stripe and Slack, tend to have robust OpenAPI specifications that account for API corner cases and cover all API endpoints. However, in most cases, you will need to deal with APIs that have incomplete or no OpenAPI documentation. In this case, you will need to author your own.
 
-But fear not! Unmock can process [`loas3`](https://www.github.com/unmock/loas3), or Lazy OpenAPI 3, a syntactic superset of OpenAPI 3.0.0.  This section gives a quick primer of the `loas3` specification.  In addition to being easier to read and write, the specification usually results in documents that are 50% the size (or less!) of their more verbose OpenAPI counterparts.
+But fear not! Unmock can process [`loas3`](https://www.github.com/unmock/loas3), or Lazy OpenAPI 3, a syntactic superset of OpenAPI 3.0.0. This section gives a quick primer of the `loas3` specification. In addition to being easier to read and write, the specification usually results in documents that are 50% the size (or less!) of their more verbose OpenAPI counterparts.
 
 ## Cascading objects
 
-Lazy Open API 3 allows you to omit information when you create a path, and provides sensible defaults when you do.  The defaults work as follows.
+Lazy Open API 3 allows you to omit information when you create a path, and provides sensible defaults when you do. The defaults work as follows.
 
 ```yaml
 paths:
@@ -72,6 +72,10 @@ paths:
 
 One gotchya is that, if you use one of the keywords that can actually be part of a [Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#schemaObject), `loas3` will treat the object like a Schema.
 
+::: tip
+In unmock, `default` response is translated to a 200 response code.
+:::
+
 ## Parameters
 
 In addition to the way parameters are expressed in OpenAPI, parameters can be specified in one of two lazy formats.
@@ -79,7 +83,6 @@ In addition to the way parameters are expressed in OpenAPI, parameters can be sp
 ### Somewhat lazy
 
 You can define `query`, `header`, `cookie` and `path` parameters as follows:
-
 
 ```yaml
 paths:
