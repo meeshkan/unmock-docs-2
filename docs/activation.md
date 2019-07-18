@@ -10,4 +10,9 @@ unmock.on()
 unmock.off()
 ```
 
-Once turned on, Unmock prevents your code from communicating with the internet, including `localhost`. This ensures your code is not exposing any test data (or, more crucially, real world data) to any external services.
+Once turned on, Unmock prevents your code from communicating with the internet, excluding `localhost`. This ensures your code is not exposing any test data (or, more crucially, real world data) to any external services.
+If needed, you may pass an array of regular expressions or wild-carded URLs when turning Unmock on:
+
+```javascript
+unmock.on({ whitelist: ["127.0.0.1", "*.googleapis.com"]});
+```
