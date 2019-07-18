@@ -1,6 +1,9 @@
 module.exports = {
     title: 'Unmock',
     description: 'A JavaScript Library for Mocking API Dependencies',
+    head: [
+      ['link', { rel: 'icon', href: '/logo.png' }]
+    ],
     themeConfig: {
         sidebar: [
           '/',
