@@ -10,6 +10,7 @@ First, let's create a project called `hello-unmock`.
 $ mkdir hello-unmock && cd hello-unmock
 $ yarn init -y
 $ yarn add -D unmock-node jest axios
+$ yarn jest --init
 ```
 
 ## Create the `__unmock__` directory
