@@ -1,8 +1,8 @@
 # Advanced Concepts
 
-Of course, setting a state (or not) is perfect, but sometimes we need to run tests for specific use cases. We might want to test our code when we hit a 500 error from a 3rd party API, or start with 10 users in our unmocked project. We might want to set a state with a string, or binary, etc.
+Of course, setting a state (or not) is perfect, but sometimes we need to run tests for specific use cases. We might want to test our code when we hit a 500 error from a 3rd party API, or start with 10 users in our Unmocked project. We might want to set a state with a string, or binary, etc.
 
-## unmock state DSL
+## Unmock state DSL
 
 We use the term _DSL_ freely, but all it really means is setting some meta-level state. All DSL elements are prefixed with the dollar sign (`$`). We expand this DSL as needed, and currently offer minimal interaction.
 
@@ -38,7 +38,7 @@ Certain object types allow further interaction. At the moment we offer a single 
 
 #### \$size
 
-For array type objects, one can control how many items are returned with the `$size` DSL instruction. unmock, as always, verifies the instruction is indeed matched for an array object, and that the value for `$size` is logical (rounds to a positive number).
+For array type objects, one can control how many items are returned with the `$size` DSL instruction. Unmock, as always, verifies the instruction is indeed matched for an array object, and that the value for `$size` is logical (rounds to a positive number).
 
 ```javascript
 // Return 4 pets. We can specify it at top level as the content returned is an array.
@@ -47,9 +47,9 @@ states.petstore("/pets", { $size: 4 });
 states.github("/search/repositories", { total_count: 40, items: { $size: 40 } });
 ```
 
-## unmock state middlewares
+## Unmock state middlewares
 
-unmock currently offers 2 middlewares. The default one is the object-notation middleware. You've seen it in the (basic usage)[/basic] - you pass key-value pairs as a state. The other one is a string middleware. Both are found under `unmock.middleware`.
+Unmock currently offers 2 middlewares. The default one is the object-notation middleware. You've seen it in the (basic usage)[/basic] - you pass key-value pairs as a state. The other one is a string middleware. Both are found under `unmock.middleware`.
 
 We roll out more middlewares as are necessary - please let us know if you're missing anything!
 

@@ -1,25 +1,25 @@
 # Basic Usage
 
-unmock aims to be as simple as possible. With that in mind, we provide minimal access points to interact with unmock, where needed. There are only 2 basic elements once you have your services and their specifications set up.
+Unmock aims to be as simple as possible. With that in mind, we provide minimal access points to interact with Unmock, where needed. There are only 2 basic elements once you have your services and their specifications set up.
 
-## Controlling unmock
+## Controlling Unmock
 
-Turning unmock on is quite easy - `unmock.on()`, `unmock.init()` and `unmock.initialize()` (for the extremely verbose) all accomplish the same thing.
-Turning unmock off is similarly easy - `unmock.off()`.
+Turning Unmock on is quite easy - `unmock.on()`, `unmock.init()` and `unmock.initialize()` (for the extremely verbose) all accomplish the same thing.
+Turning Unmock off is similarly easy - `unmock.off()`.
 
 ::: tip INFO
-Once turned on, unmock prevents your code from actually reaching the 3rd party APIs. This ensures your code is not exposing any test data (or, more crucially, real world data) to any external services.
+Once turned on, Unmock prevents your code from actually reaching the 3rd party APIs. This ensures your code is not exposing any test data (or, more crucially, real world data) to any external services.
 :::
 
 ## No state
 
-When a state is not set for a service, unmock matches the intercepted call with the service and matching endpoint, chooses a random response (you might get a 404 if it's described in the specification - who knows!), and generates it completely.
+When a state is not set for a service, Unmock matches the intercepted call with the service and matching endpoint, chooses a random response (you might get a 404 if it's described in the specification - who knows!), and generates it completely.
 We call this the "flaky" mode (which is the default), with which you can test your code on a meta level.
 Testing your code with indeterministic responses helps you make a more robust code. It helps you **fail your way to success**, a way of coding we strongly believe in.
 
 ## Setting a state
 
-The main feature for unmock is controlling the ephemeral stack for each test and service. When calling `unmock.on()` (or equivalent), you will get a _state store_ as a returned value.
+The main feature for Unmock is controlling the ephemeral stack for each test and service. When calling `unmock.on()` (or equivalent), you will get a _state store_ as a returned value.
 
 ```javascript
 var states = unmock.on();
@@ -37,7 +37,7 @@ To set a state for a service, you may:
   states.hello({ hello: "world" });
   ```
 
-  unmock will automatically find which endpoints and which HTTP methods this state applies to, and would set that as their state.
+  Unmock will automatically find which endpoints and which HTTP methods this state applies to, and would set that as their state.
 
 - Call the service with the endpoint you would like to set, and the state you would like to set for it.
 
@@ -46,7 +46,7 @@ To set a state for a service, you may:
   ```
 
   ::: tip
-  unmock also accepts wildcards for single path item replacements!
+  Unmock also accepts wildcards for single path item replacements!
 
   ```javascript
   states.petstore("/pets/*", { name: "lucy" });
@@ -98,7 +98,7 @@ axios(`${PETSTORE_URL}/pets`);
 ```
 
 ::: tip
-unmock also validates the state based on the service specification, so for example `states.hello({ hello: 5 })` would fail, since `hello` is expected to be a string!
+Unmock also validates the state based on the service specification, so for example `states.hello({ hello: 5 })` would fail, since `hello` is expected to be a string!
 :::
 
 ::: tip
