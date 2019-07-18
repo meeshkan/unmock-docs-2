@@ -12,6 +12,7 @@ module.exports = {
               ['/hello', 'Hello World']
             ]
           },
+          '/activation',
           {
             title: 'Services',
             collapsable: true,

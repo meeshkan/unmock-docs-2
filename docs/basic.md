@@ -1,25 +1,18 @@
 # Basic Usage
 
-Unmock aims to be as simple as possible. With that in mind, we provide minimal access points to interact with Unmock, where needed. There are only 2 basic elements once you have your services and their specifications set up.
+Once Unmock is activated, it will mock APIs according to the specifications in your `__unmock__` directory.
 
-## Controlling Unmock
+## Flaky mode
 
-Turning Unmock on is quite easy - `unmock.on()`, `unmock.init()` and `unmock.initialize()` (for the extremely verbose) all accomplish the same thing.
-Turning Unmock off is similarly easy - `unmock.off()`.
+Unmock's default behavior, which we affectionally call "flaky mode", serves random valid responses from your mock APIs.  While this means that your tests are not deterministic, tests like this help ensure the resiliency of your code.  Unmock keeps track of all the responses it generates so that, if your test ever fails because a random response exposes a corner case, you can use that response to write a new test.
 
-::: tip INFO
-Once turned on, Unmock prevents your code from actually reaching the 3rd party APIs. This ensures your code is not exposing any test data (or, more crucially, real world data) to any external services.
-:::
-
-## No state
-
-When a state is not set for a service, Unmock matches the intercepted call with the service and matching endpoint, chooses a random response (you might get a 404 if it's described in the specification - who knows!), and generates it completely.
-We call this the "flaky" mode (which is the default), with which you can test your code on a meta level.
 Testing your code with indeterministic responses helps you make a more robust code. It helps you **fail your way to success**, a way of coding we strongly believe in.
 
 ## Setting a state
 
-The main feature for Unmock is controlling the ephemeral stack for each test and service. When calling `unmock.on()` (or equivalent), you will get a _state store_ as a returned value.
+Sometimes, you would like to refine this behavior on a test-by-test basis. For example, you may want one test to return `404`, whereas another test should return `200` with a specific JSON response needed to test how your code handles different scenarios (for example, a user name that is too long or a negative age).
+
+To do this, you can manipulate the unmock _state store_ object. When calling `unmock.on()` (or equivalent), you will get a state store as a returned value.
 
 ```javascript
 var states = unmock.on();
@@ -27,7 +20,7 @@ var states = unmock.on();
 
 The state store is a fluent API that allows you to set specific responses/content for any HTTP method and endpoint combination. Every call to states is either a name of a service (taken from the service subfolder name), an HTTP method, or a call to `reset()`.
 
-### A typical call
+## A typical flow
 
 To set a state for a service, you may:
 
