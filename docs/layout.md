@@ -4,7 +4,7 @@ In Unmock, a service represents a third-party API or microservice with which you
 
 ## Directory structure
 
-Every service in Unmock should be in a subfolder of the `__unmock__` folder in the root directory of a project. The subfolders must be alphanumeric and must not begin with a number. Generally, for clarity, it is a good idea to name them after the service. So, for example, if you are interacting with the GitHub API, `__unmock__/github` should contain the service definition for the github API.
+Every service in unmock should be in a subfolder of the `__unmock__` folder in the root directory of a project. The subfolders must be must not begin with a number, and must not be one of the reserved keywords: `get, post, patch, delete, options, head, put, reset`. Generally, for clarity, it is a good idea to name them after the service, as the subfolder name as how you will later interact with the service state. So, for example, if you are interacting with the GitHub API, `__unmock__/github` should contain the service definition for the GitHub API.
 
 ```
 __unmock__/
