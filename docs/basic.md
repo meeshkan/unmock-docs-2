@@ -11,6 +11,12 @@ Turning unmock off is similarly easy - `unmock.off()`.
 Once turned on, unmock prevents your code from actually reaching the 3rd party APIs. This ensures your code is not exposing any test data (or, more crucially, real world data) to any external services.
 :::
 
+## No state
+
+When a state is not set for a service, unmock matches the intercepted call with the service and matching endpoint, chooses a random response (you might get a 404 if it's described in the specification - who knows!), and generates it completely.
+We call this the "flaky" mode (which is the default), with which you can test your code on a meta level.
+Testing your code with indeterministic responses helps you make a more robust code. It helps you **fail your way to success**, a way of coding we strongly believe in.
+
 ## Setting a state
 
 The main feature for unmock is controlling the ephemeral stack for each test and service. When calling `unmock.on()` (or equivalent), you will get a _state store_ as a returned value.
