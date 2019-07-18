@@ -1,6 +1,6 @@
 # Hello World
 
-This guide walks you through through mocking a simple service. Our service will be called `api.unmock.io` and it will return a single value from its endpoint: `{ hello: "world" }`.
+This guide walks you through through mocking a simple service. Our service will be called `api.unmock.io` and it will return a single value from its endpoint: `hello`, which is a string.
 
 ## Install unmock, jest, and axios
 
@@ -36,8 +36,10 @@ servers:
   - url: https://api.unmock.io
 paths:
   /:
-    hello: world
+    hello: foo
 ```
+
+unmock uses OpenAPI specification under the hood, but allows a lazy notation while writing specifications. In the above example, we automatically infer that `foo` is an example of a string.
 
 ## Creating our first test
 
@@ -45,19 +47,17 @@ Unmock works with all major test runners (mocha, jest, etc). Assuming you have j
 
 ```js
 // hello.test.js
-var unmock = require('unmock-node')
-var axios = require('axios)
+var unmock = require("unmock-node");
+var axios = require("axios");
 
-beforeAll(() => {
-    unmock.on()
-})
+unmock.on();
 
-test('hello endpoint returns correct JSON', (done) => {
-    axios.get('https://api.unmock.io').then((res) => {
-        expect(res.data).toEqual({ hello: 'world' })
-        done()
-    })
-})
+test("hello endpoint returns correct JSON", async () => {
+  var res = await axios.get("https://api.unmock.io");
+  expect(Object.keys(res.data).length).toEqual(1);
+  expect(res.data.hello).toBeDefined();
+  expect(typeof res.data.hello === "string").toBeTruthy();
+});
 ```
 
 And watch your tests pass with flying colors!
