@@ -4,6 +4,7 @@ module.exports = {
     head: [
       ['link', { rel: 'icon', href: '/logo.png' }]
     ],
+    port: process.env.PORT || 8080,
     themeConfig: {
         sidebar: [
           '/',
