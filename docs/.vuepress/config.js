@@ -30,8 +30,8 @@ module.exports = {
             title: 'State',
             collapsable: true,
             children: [
-              ['/basic', 'Basic Usage'],
-              ['/advanced', 'Advanced Concepts'],
+              ['/basic', 'Basic Concepts'],
+              ['/advanced', 'State DSL'],
             ]
           },
           {

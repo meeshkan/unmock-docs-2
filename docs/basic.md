@@ -1,4 +1,4 @@
-# Basic Usage
+# Basic Concepts
 
 Once Unmock is activated, it will mock APIs according to the specifications in your `__unmock__` directory.
 

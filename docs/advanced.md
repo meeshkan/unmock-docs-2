@@ -1,8 +1,6 @@
-# Advanced Concepts
+# State DSL
 
 Of course, setting a state (or not) is perfect, but sometimes we need to run tests for specific use cases. We might want to test our code when we hit a 500 error from a 3rd party API, or start with 10 users in our Unmocked project. We might want to set a state with a string, or binary, etc.
-
-## Unmock state DSL
 
 We use the term _DSL_ freely, but all it really means is setting some meta-level state. All DSL elements are prefixed with the dollar sign (`$`). We expand this DSL as needed, and currently offer minimal interaction.
 
@@ -43,19 +41,19 @@ states.petstore("/pets", { $size: 4 });
 states.github("/search/repositories", { total_count: 40, items: { $size: 40 } });
 ```
 
-## Unmock state middleware
+## State middleware
 
 Unmock currently offers two middleware functions. The default one is the object-notation middleware. You've seen it in the (basic usage)[/basic] - you pass key-value pairs as a state. The other one is a string middleware. Both are found under `unmock.middleware`.
 
 We roll out more middlewares as are necessary - please [let us know](https://github.com/unmock/unmock-js/issues) if you're missing anything!
 
-### Object-notation
+### Object-notation middleware
 
 This is the default notation. It matches many content type requests - `application/json`, `application/xml`, `multipart/form-data`, etc. It is the default exported middleware in `unmock.middleware`, and it is automatically used if no middleware is specified.
 
 It works by abstracting away certain elements that are present in the OpenAPI specification, but are abstracted away from the response. Thus, instead of using `{ items: { properties: { id: 5 } } }`, one may simply use `{ id: 5 }`.
 
-### String
+### String middleware
 
 Many other content types have a simple schema for a response. `text/plain`, `image/*`, `application/octet-stream` and many more have a `type: string` (and additional `format`) specified as their schema. To set a state for these responses, where we don't have a key, you may use the `textMW` (we're very creative!).
 
