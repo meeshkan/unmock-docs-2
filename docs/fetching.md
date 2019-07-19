@@ -1,6 +1,6 @@
 # Fetching Services
 
-While there is no default way to fetch services, most OpenAPI specifications of popular third-party libraries are published online. [api.guru](https://api.guru) has a great list of them.
+While there is no default way to fetch services, most OpenAPI specifications of popular third-party libraries are published online. [api.guru](https://apis.guru/browse-apis/) has a great list of them.
 
 To use the Stripe API, for example, you can do the following.
 
