@@ -85,7 +85,7 @@ With unmock, you no longer have to worry about mocking the response and/or overr
 test("setting a value for endpoint", async () => {
   unmock.states().hello({ hello: "world" });
   var res = await axios.get("https://api.unmock.io");
-  expect(res.data).toEqual({ hello: "world " });
+  expect(res.data).toEqual({ hello: "world" });
 });
 ```
 
